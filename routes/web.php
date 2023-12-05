@@ -110,45 +110,63 @@ Route::get('/', function () {
 // ////////////////////////////////////////////
 // Task2:
 
-Route::get('About' , function(){
-    return 'Welcome';
-});
+// Route::get('About' , function(){
+//     return 'Welcome';
+// });
 
-Route::get('contactUs', function(){
-    return view ('contactUs');
-});
+// Route::get('contactUs', function(){
+//     return view ('contactUs');
+// });
 
-Route::prefix('Blog')->group (function(){
+// Route::prefix('Blog')->group (function(){
    
-   Route::get('blog' , function(){
-    return view ('blog');
-});
+//    Route::get('blog' , function(){
+//     return view ('blog');
+// });
 
-    Route::get('science' , function(){
-        return 'Ready to explore the world?';
-    });
+//     Route::get('science' , function(){
+//         return 'Ready to explore the world?';
+//     });
 
-    Route::get('sports' , function(){
-        return 'Time for fitness';
-    });
+//     Route::get('sports' , function(){
+//         return 'Time for fitness';
+//     });
 
-    Route::get('math' , function(){
-        return 'Even the hardest puzzles have a solution';
-    });
+//     Route::get('math' , function(){
+//         return 'Even the hardest puzzles have a solution';
+//     });
 
-    Route::get('medical' , function(){
-        return 'Make your health a priority';
-    });
+//     Route::get('medical' , function(){
+//         return 'Make your health a priority';
+//     });
 
-});
+// });
+
+// Route::get('login', function(){
+//     return view ('login');
+// });
+
+// Route::get('login', function(){
+//     return view ('login');
+// });
+
+// Route::post('submit', function(){
+//     return 'You are logged in';
+// })->name('submit');
+
+// Route::post('logged', function(){
+//     return 'you are logged in';
+// })->name('logged');
+
+// Route::get('controller', [ExampleController::class,'show']);
+
+// Route::get('control',[ExampleController::class,'show']);
+
+// Task3:
 
 Route::get('login', function(){
-    return view ('login');
-});
+        return view ('login');
+    });
 
-Route::post('logged', function(){
-    return 'you are logged in';
-})->name('logged');
-
-Route::get('control',[ExampleController::class,'show']);
+Route::POST('/login', [ExampleController::class,'login'])->name('login');
 

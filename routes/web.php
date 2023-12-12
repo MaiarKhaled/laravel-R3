@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -170,3 +173,18 @@ Route::get('login', function(){
 
 Route::POST('/login', [ExampleController::class,'login'])->name('login');
 
+
+//Day4
+//store data into car table
+// Route:: get('storeCar',[CarController::class,'store']);
+// Route for the car table 'create'
+// Route:: get('createCar',[CarController::class,'create']);
+// Route:: get('Cars',[CarController::class,'index']);
+// Route:: post('storeCar',[CarController::class,'store'])->name('storeCar');
+
+//Task4
+//Routes for "posts" table
+
+Route:: get('createPost',[PostController::class,'create']);
+
+Route:: post('storePost',[PostController::class,'store'])->name('storePost');

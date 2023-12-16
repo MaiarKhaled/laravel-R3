@@ -71,7 +71,10 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only($this->columns);
+        $data['published'] = isset($request->published);
+        Post::where('id', $id)->update($data);
+        return redirect('posts');
     }
 
     /**

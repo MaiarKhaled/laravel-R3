@@ -7,9 +7,11 @@ use App\Models\Car;
 
 class CarController extends Controller
 {
+    private $columns = ['title', 'description', 'published'];
     /**
      * Display a listing of the resource.
      */
+   
     public function index()
     {
         //return view('cars');
@@ -30,16 +32,20 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $cars = new Car();
-        $cars->title = $request->title;
-        $cars->description = $request->description;
-        if(isset($request->published)) {
-            $cars->published = 1;
-        }else{
-            $cars->published = 0;
-        }
-        $cars->save();
-        return 'Data added successfully!';
+        // $cars = new Car();
+        // $cars->title = $request->title;
+        // $cars->description = $request->description;
+        // if(isset($request->published)) {
+        //     $cars->published = 1;
+        // }else{
+        //     $cars->published = 0;
+        // }
+        // $cars->save();
+        // return 'Data added successfully!';
+        $data = $request->only($this->columns);
+        $data['published'] = isset($request->published);
+        Car::create($data);
+        return redirect('Car');
     }
 
     /**
@@ -55,15 +61,27 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // return view ('update');
+        $car = Car::findOrFail($id);
+         return view('updateCar', compact('car'));
     }
 
     /**
      * Update the specified resource in storage.
      */
+
+    // 1st trial on lecture 5:
+    // $data = $request->only($this->columns);
+    // $data['published'] = isset ($request->published);
+    // Car::create($data);
+    // return redirect('Car');
+
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only($this->columns);
+        $data['published'] = isset($request->published);
+        Car::where('id', $id)->update($data);
+        return redirect('Car');
     }
 
     /**

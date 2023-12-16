@@ -178,13 +178,23 @@ Route::POST('/login', [ExampleController::class,'login'])->name('login');
 //store data into car table
 // Route:: get('storeCar',[CarController::class,'store']);
 // Route for the car table 'create'
-// Route:: get('createCar',[CarController::class,'create']);
-// Route:: get('Cars',[CarController::class,'index']);
-// Route:: post('storeCar',[CarController::class,'store'])->name('storeCar');
+Route:: get('createCar',[CarController::class,'create']);
+Route:: get('Car',[CarController::class,'index']);
+Route:: post('storeCar',[CarController::class,'store'])->name('storeCar');
 
-//Task4
+//Task4 & 5
 //Routes for "posts" table
 
 Route:: get('createPost',[PostController::class,'create']);
 
 Route:: post('storePost',[PostController::class,'store'])->name('storePost');
+
+Route:: get('posts',[PostController::class,'index']);
+
+Route:: get('updatePost/{id}',[PostController::class,'edit']);
+
+Route:: put('update/{id}',[PostController::class,'update'])->name('update');
+
+// Day5
+Route:: get('updateCar/{id}',[CarController::class,'edit']);
+Route:: put('update/{id}',[CarController::class,'update'])->name('update');

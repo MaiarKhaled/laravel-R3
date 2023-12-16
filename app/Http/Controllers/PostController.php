@@ -7,12 +7,14 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    private $columns = ['title', 'description','author', 'published', 'created_at'];
      /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //return view('');
+        $posts = Post::get();
+        return view('posts', compact('posts'));
         
     }
 
@@ -29,17 +31,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $posts = new Post();
-        $posts->title = $request->title;
-        $posts->description = $request->description;
-        $posts->author = $request->author;
-        if(isset($request->published)) {
-            $posts->published = 1;
-        }else{
-            $posts->published = 0;
-        }
-        $posts->save();
-        return 'Data added successfully!';
+        // $posts = new Post();
+        // $posts->title = $request->title;
+        // $posts->description = $request->description;
+        // $posts->author = $request->author;
+        // if(isset($request->published)) {
+        //     $posts->published = 1;
+        // }else{
+        //     $posts->published = 0;
+        // }
+        // $posts->save();
+        // return 'Data added successfully!';
+        $data = $request->only($this->columns);
+        $data['published'] = isset($request->published);
+        Post::create($data);
+        return redirect('posts');
     }
 
     /**
@@ -55,7 +61,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // return view('update');
+        $posts = Post::findOrFail($id);
+         return view('updatePost', compact('posts'));
     }
 
     /**

@@ -12,20 +12,29 @@
     @include('includes.postsnav')
 <div class="container">
   <h2>Update Post</h2>
-  <form action="{{ route('update' , $posts->id) }}" method="post">
+  <form action="{{ route('updateP' , $posts->id) }}" method="post">
     @csrf
     @method('put')
     <div class="form-group">
       <label for="title">Title:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{ $posts->title }}">
+      @error('title')
+        {{ $message }}
+      @enderror 
     </div>
     <div class="form-group">
       <label for="description">Description:</label>
       <textarea class="form-control" name="description" id="" cols="60" rows="3">{{ $posts->description }}</textarea>
+      @error('description')
+        {{ $message }}
+      @enderror 
     </div>
     <div class="form-group">
       <label for="author">Author:</label>
       <textarea class="form-control" name="author" id="" cols="60" rows="3">{{ $posts->author }}</textarea>
+      @error('author')
+        {{ $message }}
+      @enderror 
     </div>
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($posts->published)> Published me</label>
@@ -33,6 +42,9 @@
     <div class="form-group">
       <label for="created_at">Created at:</label>
       <input type="date" class="form-control" id="created_at" name="created_at" value="{{ $posts->created_at }}">
+      @error('created_at')
+        {{ $message }}
+      @enderror 
     </div>
     <button type="submit" class="btn btn-default">Update</button>
   </form>

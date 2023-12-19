@@ -42,7 +42,13 @@ class PostController extends Controller
         // }
         // $posts->save();
         // return 'Data added successfully!';
-        $data = $request->only($this->columns);
+        // $data = $request->only($this->columns);
+        $data = $request->validate([ 
+            'title'=>'required|string|max:50',
+            'description'=> 'required|string',
+            'author'=> 'required|string',
+            ]);
+            
         $data['published'] = isset($request->published);
         Post::create($data);
         return redirect('posts');
@@ -53,7 +59,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $posts = Post::findOrFail($id);
+         return view('showPost', compact('posts'));
     }
 
     /**
@@ -71,7 +78,12 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->only($this->columns);
+        // $data = $request->only($this->columns);
+        $data = $request->validate([ 
+            'title'=>'required|string|max:50',
+            'description'=> 'required|string',
+            'author'=> 'required|string',
+            ]);
         $data['published'] = isset($request->published);
         Post::where('id', $id)->update($data);
         return redirect('posts');
@@ -82,6 +94,28 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return redirect('posts');
+    }
+
+
+    public function trashed()
+    {
+        $posts = Post:: onlyTrashed()->get();
+        return view('trashedposts' , compact('posts'));
+    }
+
+
+    public function forceDelete(string $id)
+    {
+        Post::where('id', $id)->forceDelete();
+        return redirect('posts');
+    }
+
+
+    public function restore(string $id)
+    {
+        Post::where('id', $id)->restore();
+        return redirect('posts');
     }
 }

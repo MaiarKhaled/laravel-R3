@@ -191,10 +191,26 @@ Route:: post('storePost',[PostController::class,'store'])->name('storePost');
 
 Route:: get('posts',[PostController::class,'index']);
 
+Route:: get('showPost/{id}',[PostController::class,'show']);
+
 Route:: get('updatePost/{id}',[PostController::class,'edit']);
 
-Route:: put('update/{id}',[PostController::class,'update'])->name('update');
+Route:: put('updateP/{id}',[PostController::class,'update'])->name('updateP');
 
 // Day5
 Route:: get('updateCar/{id}',[CarController::class,'edit']);
+Route:: get('showCar/{id}',[CarController::class,'show']);
 Route:: put('update/{id}',[CarController::class,'update'])->name('update');
+
+
+// Day6 Lecture:
+Route:: get('deleteCar/{id}',[CarController::class,'destroy']);
+Route:: get('trashed',[CarController::class,'trashed'])->name('trashed');
+Route:: get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
+Route:: get('restoreCar/{id}',[CarController::class,'restore'])->name('restoreCar');
+
+//Task 6
+Route:: get('deletePost/{id}',[PostController::class,'destroy']);
+Route:: get('trashedposts',[PostController::class,'trashed'])->name('trashedposts');
+Route:: get('forceDeletePost/{id}',[PostController::class,'forceDelete'])->name('forceDeletePost');
+Route:: get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');

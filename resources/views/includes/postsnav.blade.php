@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="posts">Home</a></li>
       <li><a href="createPost">Insert Post</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="trashedposts">Trashed Posts</a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>

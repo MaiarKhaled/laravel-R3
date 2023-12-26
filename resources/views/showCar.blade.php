@@ -10,6 +10,8 @@
     <h5>Created at: {{ $car->created_at }}</h5>
     <h5>Updated at: {{ $car->updated_at }}</h5>
     <p>Description: {{ $car->description }}</p>
+    <p>Image: {{ $car->image }}</p>
     <p>Status: {{ $car->published?"published":"Not Published" }}</p>
+
 </body>
 </html>

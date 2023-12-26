@@ -14,6 +14,6 @@ class Post extends Model
         'description',
         'author',
         'published',
-        'created_at',
+        
     ];
 }

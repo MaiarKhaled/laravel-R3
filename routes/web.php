@@ -214,3 +214,34 @@ Route:: get('deletePost/{id}',[PostController::class,'destroy']);
 Route:: get('trashedposts',[PostController::class,'trashed'])->name('trashedposts');
 Route:: get('forceDeletePost/{id}',[PostController::class,'forceDelete'])->name('forceDeletePost');
 Route:: get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
+
+// Day7:
+Route:: get('try',function(){
+       return view ('try');
+});
+
+
+Route:: get('image',function(){
+    return view ('image');
+});
+
+
+Route::POST('imageupload', [ExampleController::class,'upload'])->name('imageupload');
+
+// Day 8
+Route:: get('testHome',function(){
+    return view ('testHome');
+})->name('testHome');
+
+Route:: get('404',function(){
+    return view('404');
+})->name('404');
+
+Route:: get('contact',function(){
+    return view('contact');
+})->name('contact');
+
+
+// Route:: get('contactus',function(){
+//     return view('contact');
+// })->name('contactus');

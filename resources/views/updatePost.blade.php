@@ -39,13 +39,6 @@
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($posts->published)> Published me</label>
     </div>
-    <div class="form-group">
-      <label for="created_at">Created at:</label>
-      <input type="date" class="form-control" id="created_at" name="created_at" value="{{ $posts->created_at }}">
-      @error('created_at')
-        {{ $message }}
-      @enderror 
-    </div>
     <button type="submit" class="btn btn-default">Update</button>
   </form>
 </div>
